@@ -25,7 +25,7 @@ module.exports.config = function (opts) {
 
 function drainQueue (key) {
   var subscriber = null
-  while (queues[key].length > 0) {
+  while (queues[key] && queues[key].length > 0) {
     subscriber = queues[key].shift()
     process.nextTick(subscriber)
   }
